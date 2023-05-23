@@ -1,0 +1,21 @@
+syntax="proto3";
+option java_package="ma.ahlam.stubs";
+service Bankservice{
+  rpc convert(ConvertcurrentRequest) returns (ConvertcurrentResponse);//unary model
+  rpc getCurrentStream(ConvertcurrentRequest) returns (stream ConvertcurrentResponse);// server stream model
+  rpc performStream(stream ConvertcurrentRequest) returns (ConvertcurrentResponse);// client stream model
+  rpc FullCurrentStream(stream ConvertcurrentRequest) returns (stream ConvertcurrentResponse);//Bidirectionnel stream model
+}
+
+message ConvertcurrentRequest{
+  string currencyFrom=1;
+  string currencyTo=2;
+  double amount=3;
+}
+
+message ConvertcurrentResponse{
+  string currencyFrom=1;
+  string currencyTo=2;
+  double amount=3;
+  double result=4;
+}
